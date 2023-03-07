@@ -11,8 +11,76 @@
     <!-- styles -->
     <link rel="stylesheet" href="./frontend/dist/styles/app.css" />
     <!-- fontawesome library -->
-    <!-- <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/6e358658ed.js" crossorigin="anonymous"></script>
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+
+    <form class="message-form" id="messageForm">
+
+       <!-- chat utilities -->
+      <div class="chat-utilities" id="chatUtilities">
+        <button class="fa-solid fa-plus"></button>
+      </div>
+      <!-- message input -->
+      <input type="text" class="message" id="message" placeholder="Send a message">
+      <!-- chat-interactions -->
+      <div class="chat-interactions">
+        <button class="gif-toggler menu-toggler">
+          <img src="./frontend/assets/gif-icon.png" alt="icon for toggling gif interactions">
+        </button>
+        <button class="sticker-toggler menu-toggler">
+          <i class="fa-solid fa-note-sticky"></i>
+        </button>
+        <button class="emoji-toggler menu-toggler">
+          <i class="fa-solid fa-face-smile"></i>
+        </button>
+      </div>
+
+      <div class="media-preview-window"></div>
+
+      <!-- menus -->
+      <!-- chat utilities menu -->
+      <ul class="menu chat-utilities-menu">
+        <li>
+          <i class="fa-solid fa-microphone"></i>
+          start audio call
+        </li>
+        <li>
+          <i class="fa-solid fa-video"></i>
+          start video call
+        </li>
+        <li>
+          <i class="fa-regular fa-image"></i>
+          upload image
+        </li>
+      </ul>
+
+      <!-- chat interactions menu -->
+      <div class="menu chat-interactions-menu" id="chatInteractionsMenu">
+        <div class="menu-header">
+          <ul class="menu-nav">
+            <li class="gif-toggler menu-toggler">GIFs</li>
+            <li class="sticker-toggler menu-toggler">Stickers</li>
+            <li class="emoji-toggler menu-toggler">Emoji</li>
+          </ul>
+          <p class="hint">hint: you can type <span>null</span> to pull up this menu</p>
+          <!-- search media input -->
+          <div class="search-media-input-container">
+            <input type="text" class="search-media" id="mediaSearch" data-media-type="gif" placeholder="Search GIFs...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </div>
+        
+        <!-- view -->
+        <div class="current-view-container">
+          
+        </div>
+
+      </div>
+
+    </form>
+
+    <script src="./frontend/dist/scripts/app.js"></script>
+  </body>
 </html>
