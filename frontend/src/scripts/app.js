@@ -64,13 +64,27 @@ async function getSticker(query) {
 }
 
 async function getEmoji() {
-    const response = await fetch(`https://emoji-api.com/emojis?access_key=${emoji_apikey}`);
+    const response = await fetch(`https://emoji-api.com/emojis?access_key=${emoji_apikey}`, {
+        mode: 'no-cors'
+    });
     const emojis = await response.json();
+    console.log(emojis);
     let limit = 150;
     currentViewContainer.innerHTML = '';
     for (let i = 0; i < limit; i++) {
-        currentViewContainer.innerHTML += `<span class="emoji">${emojis[i].character}</span>`
+        // currentViewContainer.innerHTML += `<span data-emoji-name="" class="emoji">${emojis[i].character}</span>`
     }
+}
+
+function filterEmoji(query) {
+    const emojis = document.querySelectorAll('.emoji');
+    emojis.forEach(emoji => {
+        if (emoji.getAttribute('emoji-name').includes(query)) {
+            emoji.style.display = 'inline-block';
+        } else {
+            emoji.style.display = 'none';
+        }
+    });
 }
 
 getEmoji();
@@ -143,6 +157,8 @@ mediaSearch.addEventListener('keyup', e => {
         getGif(mediaSearch.value);
     } else if (type === 'sticker') {
         getSticker(mediaSearch.value);
+    } else if (type === 'emoji') {
+        filterEmoji(mediaSearch.value);
     }
 });
 
